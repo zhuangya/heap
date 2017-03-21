@@ -1,0 +1,28 @@
+{
+  "name": "heap",
+  "version": "0.0.1",
+  "description": "heap in js",
+  "main": "index.js",
+  "devDependencies": {
+    "jest": "^19.0.2"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhuangya/heap.git"
+  },
+  "keywords": [
+    "heap",
+    "algorithm",
+    "data",
+    "structure"
+  ],
+  "author": "Ya Zhuang <zhuangya@gmail.com> (https://zhuangya.me/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zhuangya/heap/issues"
+  },
+  "homepage": "https://github.com/zhuangya/heap#readme"
+}
