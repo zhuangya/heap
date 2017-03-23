@@ -38,3 +38,21 @@ test('should insert to the correct position', () => {
   insertHeap.insert(1999);
   expect(insertHeap.payload).toEqual([1999, 100, 98, 99, 99, 32, 33, 3, 60, 65]);
 });
+
+const invalidHeap = new Heap([100, 98, 4, 64, 32, 72, 89]);
+
+test('should heapifyDown', () => {
+  invalidHeap.heapifyDown(2)
+  expect(invalidHeap.payload).toEqual([100, 98, 89, 64, 32, 72, 4]);
+  invalidHeap.heapifyDown(7)
+  expect(invalidHeap.payload).toEqual([100, 98, 89, 64, 32, 72, 4]);
+});
+
+const tinyHeap = new Heap([2, 1]);
+const largeHeap = new Heap([100, 99, 98,97, 96, 95, 94]);
+test('should delete', () => {
+  tinyHeap.delete(0);
+  expect(tinyHeap.payload).toEqual([1]);
+  largeHeap.delete(0);
+  expect(largeHeap.payload).toEqual([99, 97, 98, 94, 96, 95]);
+});
