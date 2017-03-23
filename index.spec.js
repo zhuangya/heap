@@ -15,6 +15,13 @@ test('it should get children indexes', () => {
   expect(readOnlyHeap.getChildrenIndexes(6)).toEqual([]);
 });
 
+test('it should get greater child index', () => {
+  expect(readOnlyHeap.getGreaterChildIndex(0)).toEqual(1);
+  expect(readOnlyHeap.getGreaterChildIndex(1)).toEqual(4);
+  expect(readOnlyHeap.getGreaterChildIndex(3)).toEqual(7);
+  expect(readOnlyHeap.getGreaterChildIndex(6)).toEqual(-1);
+});
+
 const dirtyHeap = new Heap([100, 99, 98, 60, 65, 32, 33, 3]);
 test('swap should work', () => {
   dirtyHeap.swap(0, 1);
@@ -31,4 +38,3 @@ test('should insert to the correct position', () => {
   insertHeap.insert(1999);
   expect(insertHeap.payload).toEqual([1999, 100, 98, 99, 99, 32, 33, 3, 60, 65]);
 });
-

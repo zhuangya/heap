@@ -23,6 +23,17 @@ class Heap {
     return [index * 2 + 1, index * 2 + 2].filter(x => x < this.length);
   }
 
+  getGreaterChildIndex (index) {
+    const children = this.getChildrenIndexes(index);
+    return children.reduce((maxIndex, i) => {
+      if (maxIndex === -1) {
+        return typeof i === 'undefined' ? -1 : i;
+      }
+
+      return this.payload[i] > this.payload[maxIndex] ? i : maxIndex;
+    }, -1);
+  }
+
   heapifyUp (value, from = this.length - 1) { // for insert
     if (from === 0) {
       return;
@@ -37,6 +48,7 @@ class Heap {
   }
 
   heapifyDown (value, from = 0) { // for delete after swap
+
   }
 
   insert (value) {
