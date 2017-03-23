@@ -1,3 +1,7 @@
 #heap
 
-heap in js
+heap implementation in javascript
+
+TODO:
+
+- [ ] min **and** max heap

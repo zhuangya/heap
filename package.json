@@ -1,5 +1,5 @@
 {
-  "name": "heap",
+  "name": "@zhuangya/heap",
   "version": "0.0.1",
   "description": "heap in js",
   "main": "index.js",
@@ -7,7 +7,8 @@
     "jest": "^19.0.2"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "dev": "jest --watch --coverage"
   },
   "repository": {
     "type": "git",

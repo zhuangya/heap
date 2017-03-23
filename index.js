@@ -34,7 +34,7 @@ class Heap {
     }, -1);
   }
 
-  heapifyUp (value, from = this.length - 1) { // for insert
+  heapifyUp (value, from = this.length - 1) {
     if (from === 0) {
       return;
     }
@@ -47,8 +47,18 @@ class Heap {
     }
   }
 
-  heapifyDown (value, from = 0) { // for delete after swap
+  heapifyDown (from = 0) {
+    if (from === this.length) {
+      return this.heapifyUp(this.payload[from], from);
+    }
 
+    const greaterChildIndex = this.getGreaterChildIndex(from);
+    const greaterChildValue = this.payload[greaterChildIndex];
+
+    if (this.payload[from] < greaterChildValue) {
+      this.swap(from, greaterChildIndex);
+      this.heapifyDown(greaterChildIndex);
+    }
   }
 
   insert (value) {
@@ -59,10 +69,14 @@ class Heap {
     this.heapifyUp(value);
   }
 
-  delete (value) {
+  delete (index) {
     this.dirty = true;
-    //TODO: heapify for deletion, and reset this.length;
+    this.swap(index, this.length - 1);
+
+    this.payload.pop();
     this.length = this.payload.length;
+
+    this.heapifyDown(index);
   }
 
   swap (from, to) {
