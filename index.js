@@ -8,6 +8,7 @@ class Heap {
 
     this.getParentIndex = this.getParentIndex.bind(this);
     this.getChildrenIndexes = this.getChildrenIndexes.bind(this);
+    this.getGreaterChildIndex = this.getGreaterChildIndex.bind(this);
     this.heapifyUp = this.heapifyUp.bind(this);
     this.heapifyDown = this.heapifyDown.bind(this);
     this.insert = this.insert.bind(this);
