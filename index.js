@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 const defaultCompareFn = (a, b) => Boolean(a > b);
 
 class Heap {
-  constructor (payload, compareFn=defaultCompareFn) {
+  constructor(payload, compareFn = defaultCompareFn) {
     this.payload = payload;
     this.length = payload.length;
 
@@ -19,26 +19,31 @@ class Heap {
     this.swap = this.swap.bind(this);
   }
 
-  getParentIndex (index) {
+  getParentIndex(index) {
     return index ? Math.floor((index - 1) / 2) : index;
   }
 
-  getChildrenIndexes (index) {
+  getChildrenIndexes(index) {
     return [index * 2 + 1, index * 2 + 2].filter(x => x < this.length);
   }
 
-  getPreferredChildIndex (index) {
+  getPreferredChildIndex(index) {
     const children = this.getChildrenIndexes(index);
-    return children.reduce((maxIndex, i) => {
-      if (maxIndex === -1) {
-        return typeof i === 'undefined' ? -1 : i;
-      }
+    return children.reduce(
+      (maxIndex, i) => {
+        if (maxIndex === -1) {
+          return typeof i === "undefined" ? -1 : i;
+        }
 
-      return this.compareFn(this.payload[i], this.payload[maxIndex]) ? i : maxIndex;
-    }, -1);
+        return this.compareFn(this.payload[i], this.payload[maxIndex])
+          ? i
+          : maxIndex;
+      },
+      -1
+    );
   }
 
-  heapifyUp (value, from = this.length - 1) {
+  heapifyUp(value, from = this.length - 1) {
     if (from === 0) {
       return;
     }
@@ -51,7 +56,7 @@ class Heap {
     }
   }
 
-  heapifyDown (from = 0) {
+  heapifyDown(from = 0) {
     if (from === this.length) {
       return this.heapifyUp(this.payload[from], from);
     }
@@ -65,14 +70,14 @@ class Heap {
     }
   }
 
-  insert (value) {
+  insert(value) {
     this.payload.push(value);
     this.length = this.payload.length;
 
     this.heapifyUp(value);
   }
 
-  delete (index) {
+  delete(index) {
     this.swap(index, this.length - 1);
 
     this.payload.pop();
@@ -81,10 +86,12 @@ class Heap {
     this.heapifyDown(index);
   }
 
-  swap (from, to) {
-    [this.payload[from], this.payload[to]] = [this.payload[to], this.payload[from]];
+  swap(from, to) {
+    [this.payload[from], this.payload[to]] = [
+      this.payload[to],
+      this.payload[from]
+    ];
   }
-
 }
 
 module.exports = Heap;

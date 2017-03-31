@@ -4,11 +4,21 @@
   "description": "heap in js",
   "main": "index.js",
   "devDependencies": {
-    "jest": "^19.0.2"
+    "husky": "^0.13.3",
+    "jest": "^19.0.2",
+    "lint-staged": "^3.4.0",
+    "prettier": "^0.22.0"
   },
   "scripts": {
+    "precommit": "lint-staged",
     "test": "jest",
     "dev": "jest --watch --coverage"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "repository": {
     "type": "git",
