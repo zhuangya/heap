@@ -35,5 +35,8 @@
   "bugs": {
     "url": "https://github.com/zhuangya/heap/issues"
   },
-  "homepage": "https://github.com/zhuangya/heap#readme"
+  "homepage": "https://github.com/zhuangya/heap#readme",
+  "jest": {
+    "testEnvironment": "node"
+  }
 }
