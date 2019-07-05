@@ -4,10 +4,10 @@
   "description": "heap in js",
   "main": "index.js",
   "devDependencies": {
-    "husky": "^0.13.3",
-    "jest": "^19.0.2",
-    "lint-staged": "^3.4.0",
-    "prettier": "^0.22.0"
+    "husky": "^3.0.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^9.0.2",
+    "prettier": "^1.18.2"
   },
   "scripts": {
     "precommit": "lint-staged",
