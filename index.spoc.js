@@ -8,16 +8,16 @@ describe("max heap (the default heap)", () => {
   test("it should get parent index", () => {
     [
       readOnlyHeap.getParentIndex(1),
-      readOnlyHeap.getParentIndex(6)
-    ].forEach(t => expect(t).toMatchSnapshot());
+      readOnlyHeap.getParentIndex(6),
+    ].forEach((t) => expect(t).toMatchSnapshot());
   });
 
   test("it should get children indexes", () => {
     [
       readOnlyHeap.getChildrenIndexes(1),
       readOnlyHeap.getChildrenIndexes(3),
-      readOnlyHeap.getChildrenIndexes(6)
-    ].forEach(t => expect(t).toMatchSnapshot());
+      readOnlyHeap.getChildrenIndexes(6),
+    ].forEach((t) => expect(t).toMatchSnapshot());
   });
 
   test("it should get preferred child index", () => {
@@ -25,8 +25,8 @@ describe("max heap (the default heap)", () => {
       readOnlyHeap.getPreferredChildIndex(0),
       readOnlyHeap.getPreferredChildIndex(1),
       readOnlyHeap.getPreferredChildIndex(3),
-      readOnlyHeap.getPreferredChildIndex(6)
-    ].forEach(t => expect(t).toMatchSnapshot());
+      readOnlyHeap.getPreferredChildIndex(6),
+    ].forEach((t) => expect(t).toMatchSnapshot());
   });
 
   const dirtyHeap = new Heap([100, 99, 98, 60, 65, 32, 33, 3]);
@@ -53,7 +53,7 @@ describe("max heap (the default heap)", () => {
       33,
       3,
       60,
-      65
+      65,
     ]);
   });
 
