@@ -120,3 +120,24 @@ describe("min heap (the default heap)", () => {
     expect(minHeap.getPreferredChildIndex(input)).toBe(result);
   });
 });
+
+describe("common operations", () => {
+  test("should insert to correct position", () => {
+    const maxHeap = new Heap([100, 99, 98, 60, 65, 32, 33, 3]);
+    maxHeap.insert(99);
+    expect(maxHeap).toMatchSnapshot();
+  });
+
+  test("should auto correct", () => {
+    const dirtyHeap = new Heap([1, 2, 3]);
+    expect(dirtyHeap).toMatchSnapshot();
+  });
+
+  test("should delete", () => {
+    const heap = new Heap([1, 2, 3, 4, 5, 6, 7, 8, 42, 9]);
+    heap.delete(3);
+    expect(heap).toMatchSnapshot();
+    heap.delete(heap.length - 1);
+    expect(heap.content).toStrictEqual([42, 9, 6, 4, 8, 2, 5, 1]);
+  });
+});

@@ -3,17 +3,22 @@ function defaultCompareFn<T = number>(a: T, b: T): number {
 }
 
 export class Heap<T = number> {
-  private payload: Array<T>;
+  private payload: Array<T> = [];
   compareFn: (a: T, b: T) => number;
 
   get length() {
     return this.payload.length;
   }
 
+  get content() {
+    return this.payload;
+  }
+
   constructor(payload: Array<T>, compareFn = defaultCompareFn) {
-    // TODO: heapify current payload first.
-    this.payload = payload;
     this.compareFn = compareFn;
+    for (const value of payload) {
+      this.insert(value);
+    }
   }
 
   private swap(since: number, until: number): void {
@@ -29,7 +34,7 @@ export class Heap<T = number> {
     }
 
     // 从根据当前 index 奇偶决定减 1 还是 2
-    // 也就是 Math.floor((index - (index % 2 ? 1 : 2)) / 2)
+    // 也就是 Math.floor((index - (index % 1 ? 1 : 2)) / 2)
     // 但其实把分数式拆一下就可以直接 (index / 2) - (index % 2 ? 0 : 1)
     // 再用 `>>>` 直接省掉了 Math.floor
 
@@ -48,20 +53,20 @@ export class Heap<T = number> {
     );
   }
 
-  heapifyUp(value: T, since: number = this.length - 1): void {
+  private heapifyUp(value: T, since: number = this.length - 1): void {
     if (since === 0) {
       return;
     }
     const parentIndex = this.getParentIndex(since);
     const parentValue = this.payload[parentIndex];
 
-    if (this.compareFn(value, parentValue)) {
+    if (this.compareFn(value, parentValue) < 0) {
       this.swap(since, parentIndex);
       this.heapifyUp(value, parentIndex);
     }
   }
 
-  heapifyDown(since: number = 0): void {
+  private heapifyDown(since: number): void {
     if (since === this.length) {
       return this.heapifyUp(this.payload[since], since);
     }
@@ -69,7 +74,7 @@ export class Heap<T = number> {
     const greaterChildIndex = this.getPreferredChildIndex(since);
     const greaterChildValue = this.payload[greaterChildIndex];
 
-    if (this.compareFn(greaterChildValue, this.payload[since])) {
+    if (this.compareFn(greaterChildValue, this.payload[since]) < 0) {
       this.swap(since, greaterChildIndex);
       this.heapifyDown(greaterChildIndex);
     }

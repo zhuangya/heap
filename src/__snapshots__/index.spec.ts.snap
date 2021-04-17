@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`common operations should auto correct 1`] = `
+Heap {
+  "compareFn": [Function],
+  "payload": Array [
+    3,
+    1,
+    2,
+  ],
+}
+`;
+
+exports[`common operations should delete 1`] = `
+Heap {
+  "compareFn": [Function],
+  "payload": Array [
+    42,
+    9,
+    6,
+    4,
+    8,
+    2,
+    5,
+    1,
+    3,
+  ],
+}
+`;
+
+exports[`common operations should insert to correct position 1`] = `
+Heap {
+  "compareFn": [Function],
+  "payload": Array [
+    100,
+    99,
+    98,
+    99,
+    65,
+    32,
+    33,
+    3,
+    60,
+  ],
+}
+`;
