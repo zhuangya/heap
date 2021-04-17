@@ -1,5 +1,6 @@
 {
   "name": "@zhuangya/heap",
+  "type": "module",
   "author": "Ya Zhuang <zhuangya@users.noreply.github.com> (https://zhuangya.me/)",
   "license": "MIT",
   "version": "0.1.0",
@@ -20,18 +21,10 @@
     "dev": "jest --watch --coverage"
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
-    ]
+    "*.js": ["prettier --write", "git add"]
   },
   "repository": "github:zhuangya/heap",
-  "keywords": [
-    "heap",
-    "algorithm",
-    "data",
-    "structure"
-  ],
+  "keywords": ["heap", "algorithm", "data", "structure"],
   "jest": {
     "testEnvironment": "node",
     "transform": {
